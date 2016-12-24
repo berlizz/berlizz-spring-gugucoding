@@ -64,7 +64,7 @@
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
-						<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button><!-- ADD REPLY 버튼과 LIST PAGE 버튼이 같은 클래스 속성을 이용하므로 이벤트 처리시 수정 필요할 듯 -->
+						<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
 					</div>
 				</div>
 			</div>
@@ -73,7 +73,8 @@
 		<!-- The time line -->
 		<ul class="timeline">
 			<!-- timeline time label -->
-			<li class="time-label" id="repliesDiv"><span class="bg-green">Replies List</span></li>
+			<li class="time-label" id="repliesDiv"><span class="bg-green">Replies List
+				<small id="replycntSmall">[ ${boardVO.replycnt} ]</small></span></li>	
 		</ul>
 				
 		<div class="text-center">
@@ -181,6 +182,8 @@
 		$.getJSON(pageInfo, function(data) {
 			printData(data.list, $("#repliesDiv"), $("#template"));
 			printPaging(data.pageMaker, $(".pagination"));
+			
+			$("#replycntSmall").html("[ " + data.pageMaker.totalCount + " ]"); 
 		});
 	}
 	

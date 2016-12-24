@@ -31,6 +31,12 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<tx:annotation-driven/>
+	
 	<context:component-scan base-package="org.zerock.persistence"></context:component-scan>
 	<context:component-scan base-package="org.zerock.service"></context:component-scan>
 	<context:component-scan base-package="org.zerock.aop"></context:component-scan>
@@ -39,6 +45,7 @@
 	
 	<!-- 자동으로 AspectJ 라이브러리를 이용하여 Proxy 객체 생성 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
 	
 		
 </beans>
