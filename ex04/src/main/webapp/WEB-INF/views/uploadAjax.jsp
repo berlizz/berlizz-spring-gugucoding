@@ -51,7 +51,64 @@
 				contentType:false,
 				type:'POST',
 				success:function(data) {
-					alert(data);
+					var str="";
+					
+					if(checkImageType(data)) {
+						str = "<div>" + "<a href='displayFile?fileName=" + getImageLink(data) + "'>" 
+								+ "<img src='displayFile?fileName=" + data + "'/>" + getImageLink(data) 
+								+ "</a><small data-src=" + data + ">X</small></div>";
+					} else {
+						str = "<div><a href='displayFile?fileName=" + data + "'>" + getOriginalName(data) 
+								+ "</a><small data-src=" + data + ">X</small></div>";
+					}
+					
+					$(".uploadedList").append(str);
+				}
+			});
+		});
+	</script>
+	
+	<script>
+		function checkImageType(fileName) {	
+			var pattern = /jpg|gif|png|jpeg/i;
+			
+			return fileName.match(pattern);
+		}
+		
+		function getOriginalName(fileName) {
+			if(checkImageType(fileName)) {
+				return;
+			}
+			
+			var idx = fileName.indexOf("_") + 1;
+			return fileName.substr(idx);
+		}
+		
+		function getImageLink(fileName) {
+			if(!checkImageType(fileName)) {
+				return;
+			}
+			
+			var front = fileName.substr(0, 12);
+			var end = fileName.substr(14);
+			
+			return front + end;
+		}
+	</script>
+	
+	<script>
+		$(".uploadedList").on("click", "small", function(event) {
+			var that = $(this);
+			
+			$.ajax({
+				url:'deleteFile',
+				type:'post',
+				data:{fileName:that.attr("data-src")},
+				dataType:'text',
+				success:function(result) {
+					if(result == "deleted") {
+						that.parent("div").remove();
+					}
 				}
 			});
 		});
