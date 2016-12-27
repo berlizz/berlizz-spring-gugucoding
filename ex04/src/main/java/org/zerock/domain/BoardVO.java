@@ -11,6 +11,7 @@ public class BoardVO {
 	private Date regdate;
 	private int viewcnt;
 	private int replycnt;
+	private String[] files;
 	
 	
 	public Integer getBno() {
@@ -54,6 +55,12 @@ public class BoardVO {
 	}
 	public void setReplycnt(int replycnt) {
 		this.replycnt = replycnt;
+	}
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
 	}
 	
 	

@@ -125,6 +125,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where bno = #{bno}
 	</update>
 	
+	<insert id="addAttach">
+		insert into tbl_attach(fullName, bno)
+		values(#{fullName}, LAST_INSERT_ID())
+	</insert>
+	
+	<select id="getAttach" resultType="String">
+		select fullName
+		from tbl_attach
+		where bno = #{bno}
+		order by regdate
+	</select>
+	
+	<delete id="deleteAttach">
+		delete from tbl_attach
+		where bno = #{bno}
+	</delete>
+	
+	<insert id="replaceAttach">
+		insert into tbl_attach(fullname, bno)
+		values(#{fullName}, #{bno})
+	</insert>
+	
 	
 </mapper>
 
