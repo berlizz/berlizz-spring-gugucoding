@@ -39,6 +39,20 @@
 		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="loginInterceptor" class="org.zerock.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" class="org.zerock.interceptor.AuthInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"></mapping>
+			<beans:ref bean="loginInterceptor"></beans:ref>
+		</interceptor>
+		<interceptor>
+			<mapping path="/sboard/register"></mapping>
+			<beans:ref bean="authInterceptor"></beans:ref>
+		</interceptor>
+	</interceptors>
+	
+	
 	<context:component-scan base-package="org.zerock.controller" />
 	
 	
