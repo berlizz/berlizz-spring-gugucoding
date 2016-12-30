@@ -54,9 +54,11 @@
 					<!-- /.box-body -->
 					
 					<div class="box-footer">
-						<button type="submit" class="btn btn-warning" id="modifyBtn">MODIFY</button>
-						<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-						<button type="submit" class="btn btn-primary" id="listPageBtn">LIST PAGE</button>
+						<c:if test="${login.uid == boardVO.writer}">
+							<button type="submit" class="btn btn-warning" id="modifyBtn">MODIFY</button>
+							<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
+						</c:if>
+							<button type="submit" class="btn btn-primary" id="listPageBtn">LIST PAGE</button>
 					</div>
 				</div>
 			</div>
@@ -69,9 +71,10 @@
 					<div class="box-header">
 						<h3 class="box-title-">ADD NEW REPLY</h3>
 					</div>
+					<c:if test="${not empty login}">
 					<div class="box-body">
 						<label for="newReplyWriter">Writer</label>
-						<input class="form-control" type="text" placeholder="USER ID" id="newReplyWriter">
+						<input class="form-control" type="text" id="newReplyWriter" value="${login.uid}" readonly="readonly">
 						<label for="newReplyText">Reply text</label>
 						<input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText">
 					</div>
@@ -79,6 +82,12 @@
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
 					</div>
+					</c:if>
+					<c:if test="${empty login}">
+						<div class="box-body">
+							<div><a href="javascript:goLogin();">Login Please</a></div>
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

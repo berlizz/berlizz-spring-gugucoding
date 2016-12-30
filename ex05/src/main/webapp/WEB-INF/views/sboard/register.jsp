@@ -27,7 +27,7 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">writer</label>
-								<input type="text" name="writer" class="form-control" placeholder="Enter Writer">
+								<input type="text" name="writer" class="form-control" value="${login.uid }" readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">File Drop Here</label>

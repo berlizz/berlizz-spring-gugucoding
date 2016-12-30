@@ -48,6 +48,8 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/sboard/register"></mapping>
+			<mapping path="/sboard/modifyPage"></mapping>
+			<mapping path="/sboard/removePage"></mapping>
 			<beans:ref bean="authInterceptor"></beans:ref>
 		</interceptor>
 	</interceptors>
