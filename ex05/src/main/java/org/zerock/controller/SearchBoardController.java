@@ -84,7 +84,7 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void register() throws Exception {
+	public void register() throws Exception {		
 		logger.info("register() GET..............."); 
 	}
 	

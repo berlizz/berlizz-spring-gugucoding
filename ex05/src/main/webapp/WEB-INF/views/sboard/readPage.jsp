@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ include file="../include/header.jsp" %>
@@ -184,8 +183,10 @@
 			</span>
 			<h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
 			<div class="timeline-body">{{replytext}}</div>
+			{{#eqReplyer replyer}}
 			<div class="timeline-footer">
 				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+				{{/eqReplyer}}
 			</div>
 		</div>
 	</li>
@@ -201,6 +202,15 @@
 		var hours = dateObj.getHours();
 		var minutes = dateObj.getMinutes();
 		return year + "/" + month + "/" + date + " " + hours + ":" + minutes;
+	});
+	
+	Handlebars.registerHelper("eqReplyer", function(replyer, block) {
+		var accum = "";
+		if(replyer == "${login.uid}") {
+			accum += block.fn();
+		}
+		
+		return accum;
 	});
 	
 	function printData(replyArr, target, templateObject) {
