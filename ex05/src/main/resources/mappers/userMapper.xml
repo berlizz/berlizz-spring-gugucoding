@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="checkUserWithSessionKey" resultType="UserVO">
 		select *
 		from tbl_user
-		where sessionkey = #{value}
+		where sessionkey = #{value} and sessionlimit > now()
 	</select>
 
 </mapper>
