@@ -15,10 +15,24 @@ public class SampleMapperTest {
 	@Inject
 	private SampleMapper mapper;
 	
-	@Test
+	/*@Test
 	public void testTime() {
 		System.out.println("mapper.getClass().getName() : " + mapper.getClass().getName());
 		
 		System.out.println("mapper.getTime() : " + mapper.getTime());
+	}*/
+	
+	/*@Test
+	public void testMail() {
+		String email = mapper.getEmail("user10", "user10");
+		
+		System.out.println(email);
+	}*/
+	
+	@Test
+	public void testUserName() {
+		String name = mapper.getUserName("user10", "user10");
+		
+		System.out.println(name);
 	}
 }
